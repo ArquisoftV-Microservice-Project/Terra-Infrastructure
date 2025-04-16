@@ -90,7 +90,10 @@ jobs:
 
       # --- PASO 4: Plan + Infracost ---
       - name: Terraform Plan
-        run: terraform plan
+        run: |
+          export TF_LOG=TRACE
+          terraform plan -out=tfplan > plan_debug.log 2>&1
+          cat plan_debug.log | grep -i "elapsed" | sort -k 4 -n
 
       - name: Terraform Plan Show
         run: terraform show tfplan
