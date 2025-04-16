@@ -90,7 +90,7 @@ jobs:
 
       # --- PASO 4: Plan + Infracost ---
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan
 
       - name: Terraform Plan Show
         run: terraform show tfplan
