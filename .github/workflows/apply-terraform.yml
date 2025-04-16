@@ -3,10 +3,8 @@ name: Terraform Applying Pipeline
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  workflow_run:
-    workflows: ["Terraform Planning Pipeline"]
-    types:
-      - completed
+  push:
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -56,10 +54,6 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       # --- PASO 3: Aplicar los cambios ---
-      - name: Download tfplan artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan
 
       - name: Terraform Init
         run: terraform init
