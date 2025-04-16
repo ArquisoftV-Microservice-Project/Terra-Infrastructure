@@ -93,10 +93,3 @@ jobs:
 
       - name: Terraform Plan Show
         run: terraform show tfplan
-
-      # --- PASO 5: Artifact ---
-      - name: Upload tfplan artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfplan
-          path: tfplan
