@@ -39,6 +39,7 @@ jobs:
           # Verifica que el archivo se creó correctamente
           head -n 3 terraform-key.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/terraform-key.json" >> $GITHUB_ENV
+          gcloud auth activate-service-account --key-file=terraform-key.json
 
       # Configura AWS (usando secrets)
       - name: Set up AWS credentials
@@ -83,23 +84,14 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      # - name: Run tflint
-      #   run: |
-      #     tflint --init
-      #     tflint --color
+      - name: Run tflint
+        run: |
+          tflint --init
+          tflint --color
 
       # --- PASO 4: Plan + Infracost ---
       - name: Terraform Plan
-        run: |
-          aws sts get-caller-identity
-          gcloud auth list
-          echo $AWS_ACCESS_KEY_ID
-          echo $AWS_SECRET_ACCESS_KEY
-          echo $GOOGLE_APPLICATION_CREDENTIALS
-          gcloud auth activate-service-account --key-file=terraform-key.json
-          gcloud auth list
-          export TF_LOG=TRACE
-          terraform plan -out=tfplan
+        run: terraform plan -out=tfplan
 
       - name: Terraform Plan Show
         run: terraform show tfplan
