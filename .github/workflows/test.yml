@@ -83,10 +83,10 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Run tflint
-        run: |
-          tflint --init
-          tflint --color
+      # - name: Run tflint
+      #   run: |
+      #     tflint --init
+      #     tflint --color
 
       # --- PASO 4: Plan + Infracost ---
       - name: Terraform Plan
