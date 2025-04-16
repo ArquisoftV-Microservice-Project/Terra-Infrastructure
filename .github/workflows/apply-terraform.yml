@@ -54,10 +54,6 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       # --- PASO 3: Aplicar los cambios ---
-      - name: Download tfplan artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan
 
       - name: Terraform Init
         run: terraform init
