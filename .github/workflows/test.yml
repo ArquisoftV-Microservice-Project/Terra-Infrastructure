@@ -95,6 +95,8 @@ jobs:
           gcloud auth list
           echo $AWS_ACCESS_KEY_ID
           echo $AWS_SECRET_ACCESS_KEY
+          echo $GOOGLE_APPLICATION_CREDENTIALS
+          pwd
           export TF_LOG=TRACE
           # terraform plan -out=tfplan > plan_debug.log 2>&1
           # cat plan_debug.log | grep -i "elapsed" | sort -k 4 -n
