@@ -96,10 +96,10 @@ jobs:
           echo $AWS_ACCESS_KEY_ID
           echo $AWS_SECRET_ACCESS_KEY
           echo $GOOGLE_APPLICATION_CREDENTIALS
-          pwd
+          gcloud auth activate-service-account --key-file=terraform-key.json
+          gcloud auth list
           export TF_LOG=TRACE
-          # terraform plan -out=tfplan > plan_debug.log 2>&1
-          # cat plan_debug.log | grep -i "elapsed" | sort -k 4 -n
+          terraform plan -out=tfplan
 
-      # - name: Terraform Plan Show
-      #   run: terraform show tfplan
+      - name: Terraform Plan Show
+        run: terraform show tfplan
