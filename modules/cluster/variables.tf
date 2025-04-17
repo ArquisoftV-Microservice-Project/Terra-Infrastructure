@@ -6,6 +6,11 @@ variable "region" {
   description = "region"
 }
 
+variable "node_locations" {
+  description = "node locations"
+  type        = list(string)
+}
+
 variable "vpc_name" {
   description = "vpc name"
 }
