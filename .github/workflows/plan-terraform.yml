@@ -36,7 +36,7 @@ jobs:
       - name: Set up GCP credentials
         run: |
           pwd
-          echo "${{ secrets.GCP_SA_CREDENTIALS }}" > terraform-key.json
+          echo '${{ secrets.GCP_SA_CREDENTIALS }}' > terraform-key.json
           head -c 20 terraform-key.json | cat -A
 
       - id: "auth"
