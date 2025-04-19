@@ -36,5 +36,6 @@ variable "pools" {
     backend    = 4
     database   = 1
     monitoring = 2
+    qa         = 1
   }
 }
