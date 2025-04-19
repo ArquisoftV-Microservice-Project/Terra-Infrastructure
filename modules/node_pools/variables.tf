@@ -33,8 +33,8 @@ variable "pools" {
 
   default = {
     frontend   = 1
-    backend    = 4
+    backend    = 5
     database   = 1
-    monitoring = 2
+    monitoring = 4
   }
 }
