@@ -210,6 +210,11 @@ repo_description = "Microservice registry"
 
 ---
 
+## Infracost integration
+
+To use infracost integration we must create a infracost account, then register all the repositories that we want to evaluate, in this case, we added Terra-Infrastructure and Terra-Backend.
+
+
 ## 📄 License
 
 This project is licensed under the terms of the [LICENSE](./LICENSE) file.
