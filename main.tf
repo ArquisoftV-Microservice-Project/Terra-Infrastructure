@@ -55,7 +55,16 @@ module "namespaces" {
   source = "./modules/namespaces"
 }
 
-module "ingress" {
-  source    = "./modules/ingress"
+module "static_external_ip" {
+  source      = "./modules/static_external_ip"
+  project_id  = var.project_id
+  region      = var.region
+  name_prefix = "ingress-static-ip"
+  ip_count    = 2
+}
+
+module "ingress_static_ip" {
+  source    = "./modules/ingress_static_ip"
   namespace = "frontend"
+  static_ip = module.static_external_ip.static_ips[0]
 }
