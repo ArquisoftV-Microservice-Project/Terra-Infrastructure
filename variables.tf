@@ -24,7 +24,7 @@ variable "repo_name" {
 variable "repo_description" {
   description = "repo_description"
   default     = "desc"
-  type        = string
+  
 }
 
 variable "credentials_file" {
